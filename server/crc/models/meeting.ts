@@ -18,7 +18,7 @@ export const Meeting = sequelize.define('meeting',{
         allowNull: false
     },
     startTime: {
-        type: DataTypes.TIME, 
+        type: DataTypes.INTEGER, 
         allowNull: false
     },
     duration: {

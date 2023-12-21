@@ -1,0 +1,46 @@
+<form [formGroup]="formMeeting" (ngSubmit)="addMeeting()" class="mt-3">
+    <div class="wrapper">
+        <div class="body">
+            <h3>Agregar reunión</h3>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese título" formControlName="title">
+                <div class="text-danger" *ngIf="formMeeting.get('title')?.errors && formMeeting.get('title')?.touched">
+                    Campo requerido</div>
+                <label>Título</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese detalle" formControlName="detail">
+                <div class="text-danger"
+                    *ngIf="formMeeting.get('detail')?.errors && formMeeting.get('detail')?.touched">Campo requerido
+                </div>
+                <label>Detalle</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="date" class="form-control" placeholder="Ingrese fecha" formControlName="date">
+                <div class="text-danger"
+                    *ngIf="formMeeting.get('date')?.errors && formMeeting.get('date')?.touched && formMeeting.get('date')?.hasError('dayNoLaborable')">
+                    Campo requerido<br>No puede ingresar sabado o domingo</div>
+                <label>Fecha</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" placeholder="Ingrese hora de inicio"
+                    formControlName="startTime">
+                <div class="text-danger"
+                    *ngIf="formMeeting.get('startTime')?.errors && formMeeting.get('startTime')?.touched && formMeeting.get('startTime')?.hasError('invalidTime')">
+                    Campo requerido<br>La hora debe ser entre 8 y 22 hs</div>
+                <label>Hora de inicio</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" placeholder="Ingrese duración" formControlName="duration">
+                <div class="text-danger"
+                    *ngIf="formMeeting.get('duration')?.errors && formMeeting.get('duration')?.touched">Campo requerido
+                </div>
+                <label>Duración</label>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-danger" [disabled]="formMeeting.invalid">Agregar</button>
+                <button type="button" class="btn btn-success" (click)="goBack()">Volver</button>
+            </div>
+        </div>
+    </div>
+</form>

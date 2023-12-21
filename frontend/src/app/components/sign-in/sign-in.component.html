@@ -1,0 +1,35 @@
+<form [formGroup]="formRegisterUser" (ngSubmit)="addUser()">
+    <div class="wrapper">
+        <div *ngIf="!loading" class="body">
+            <img class="logo" src="../../../assets/img/login.png" alt="img-login">
+            <h3>Regístrate</h3>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese usuario" formControlName="userName">
+                <div class="text-danger"
+                    *ngIf="formRegisterUser.get('userName')?.errors && formRegisterUser.get('userName')?.touched">Campo
+                    requerido</div>
+                <label>Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" placeholder="Ingrese contraseña" formControlName="password">
+                <div class="text-danger"
+                    *ngIf="formRegisterUser.get('password')?.errors && formRegisterUser.get('password')?.touched">Campo
+                    requerido</div>
+                <label>Constraseña</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" placeholder="Ingrese contraseña de nuevo"
+                    formControlName="confirmPassword">
+                <div class="text-danger"
+                    *ngIf="formRegisterUser.get('confirmPassword')?.errors && formRegisterUser.get('confirmPassword')?.touched">
+                    Campo requerido</div>
+                <label>Repetir constraseña</label>
+            </div>
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-danger" [disabled]="formRegisterUser.invalid">Aceptar</button>
+            </div>
+            <a routerLink="/login">Volver</a>
+        </div>
+        <app-spinner *ngIf="loading"></app-spinner>
+    </div>
+</form>

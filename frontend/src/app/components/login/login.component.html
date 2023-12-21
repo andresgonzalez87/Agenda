@@ -1,0 +1,25 @@
+<form [formGroup]="formUser" (ngSubmit)="login()">
+    <div class="wrapper">
+        <div *ngIf="!loading" class="body">
+            <img class="logo" src="../../../assets/img/login.png" alt="img-login">
+            <h3>Iniciar sesión</h3>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Ingrese usuario" formControlName="userName">
+                <div class="text-danger" *ngIf="formUser.get('userName')?.errors && formUser.get('userName')?.touched">
+                    Campo requerido</div>
+                <label>Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" placeholder="Ingrese contraseña" formControlName="password">
+                <div class="text-danger" *ngIf="formUser.get('password')?.errors && formUser.get('password')?.touched">
+                    Campo requerido</div>
+                <label>Constraseña</label>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-danger" [disabled]="formUser.invalid">Aceptar</button>
+            </div>
+            <p class="mt-3">No tienes cuenta? <a routerLink="/signIn">Registrarse</a></p>
+        </div>
+        <app-spinner *ngIf="loading"></app-spinner>
+    </div>
+</form>
