@@ -10,9 +10,13 @@ export class NavbarComponent {
 
   constructor (private router: Router) { }
 
-  logOut() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+  getLoggedUsername(): string | null {
+    return localStorage.getItem('username');
   }
 
+  logOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    this.router.navigate(['/login']);
+  }
 }

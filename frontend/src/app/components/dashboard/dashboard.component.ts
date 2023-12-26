@@ -20,6 +20,8 @@ export class DashboardComponent {
   firstDayOfWeek: Date = new Date();
   lastDayOfWeek: Date = new Date();
   loading: boolean = true;
+  
+  
 
   constructor(
 

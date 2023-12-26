@@ -49,6 +49,7 @@ export class LoginComponent {
     this._userService.login(user).subscribe({
       next: (token) => {
         localStorage.setItem('token', token);
+        localStorage.setItem('username', userName);
         console.log(token);
         this.router.navigate(['/dashboard'])
       },
