@@ -60,6 +60,3 @@ export class LoginComponent {
     })
   }
 }
-
-
-
